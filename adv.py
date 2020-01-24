@@ -32,7 +32,7 @@ player = Player(world.starting_room)
 traversal_path = []
 
 
-opposites = {
+opposite_legend = {
     "n": "s",
     "s": "n",
     "e": "w",
@@ -42,6 +42,22 @@ opposites = {
 
 def traverse_map():
     visited = {}
+    prev_room = []
+    last_direction = ''
+
+    while len(visited) < len(room_graph):
+
+        if player.current_room not in list(visited):
+
+            room_data = {}
+
+            for direction in player.current_room.get_exits():
+                room_data[direction] = '?'
+
+            visited[player.current_room.id] = room_data
+
+        else:
+            return
 
     return
 
