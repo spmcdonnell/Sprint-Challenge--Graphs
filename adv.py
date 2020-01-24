@@ -2,8 +2,6 @@ from room import Room
 from player import Player
 from world import World
 
-from util import Stack, Queue
-
 import random
 from ast import literal_eval
 
@@ -69,6 +67,7 @@ def traverse_map():
 
             visited[current_location.id] = room_data
 
+            ### Link current room direction that points to previous room ###
             if len(prev_room):
                 visited[current_location.id][reverse_direction] = prev_room[-1]
 
@@ -123,8 +122,6 @@ def traverse_map():
         # Has been visited
         ##############################
         else:
-            if visited[current_location.id][reverse_direction] == '?':
-                visited[current_location.id][reverse_direction] = prev_room[-1]
 
             ### Gather available potential moves from current location ###
             possible_moves = []
